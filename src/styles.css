@@ -116,15 +116,15 @@ a, button, select, input, textarea { -webkit-tap-highlight-color: transparent; t
 @layer base { input, textarea { font-size: 16px; } }
 
 @utility glass {
-  background: linear-gradient(145deg, oklch(1 0 0 / 16%), oklch(1 0 0 / 6%));
-  backdrop-filter: blur(24px) saturate(160%);
+  background: linear-gradient(145deg, oklch(1 0 0 / 14%), oklch(1 0 0 / 5%));
+  backdrop-filter: blur(16px) saturate(140%);
   border: 1px solid oklch(1 0 0 / 14%);
   border-radius: 1.75rem;
   box-shadow:
-    14px 18px 36px -10px oklch(0.08 0.04 240 / 65%),
-    inset 6px 6px 14px oklch(1 0 0 / 14%),
-    inset -8px -8px 18px oklch(0.1 0.04 240 / 35%);
-  transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease;
+    12px 16px 32px -10px oklch(0.08 0.04 240 / 60%),
+    inset 0 1px 0 oklch(1 0 0 / 20%);
+  transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s ease;
+  will-change: transform;
 }
 @utility text-gradient {
   background: var(--gradient-text);
@@ -170,21 +170,6 @@ a, button, select, input, textarea { -webkit-tap-highlight-color: transparent; t
 @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 @utility animate-rise { animation: rise .5s cubic-bezier(.2,.8,.2,1) both; }
 
-@keyframes rgb-spin {
-  0% { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.65; transform: scale(1); }
-  50% { opacity: 0.95; transform: scale(1.03); }
-}
-
-@keyframes ambient-float {
-  0%, 100% { transform: translate(0px, 0px) scale(1); }
-  50% { transform: translate(15px, -15px) scale(1.08); }
-}
-
 @utility clay-pill {
   display: inline-flex; align-items: center; gap: .35rem;
   border-radius: 999px; padding: .5rem 1rem; font-size: .85rem; font-weight: 700;
@@ -195,30 +180,29 @@ a, button, select, input, textarea { -webkit-tap-highlight-color: transparent; t
   &:active { transform: scale(.95); }
 }
 
-/* HiOS / iOS dynamic sliding glass tab bar */
 @utility ios-tabbar {
   border-radius: 9999px;
   background: linear-gradient(180deg, oklch(0.25 0.035 240 / 78%) 0%, oklch(0.14 0.035 240 / 92%) 100%);
-  backdrop-filter: blur(30px) saturate(190%);
-  -webkit-backdrop-filter: blur(30px) saturate(190%);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
   border: 1px solid oklch(1 0 0 / 18%);
   box-shadow:
     0 20px 42px -10px oklch(0.04 0.03 240 / 90%),
     inset 0 1px 1px oklch(1 0 0 / 35%),
     inset 0 -1px 2px oklch(0 0 0 / 45%);
+  will-change: transform;
+  transform: translateZ(0);
 }
 @utility ios-tab-thumb {
   border-radius: 9999px;
-  background: linear-gradient(180deg, oklch(1 0 0 / 22%) 0%, oklch(1 0 0 / 6%) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: linear-gradient(180deg, oklch(1 0 0 / 20%) 0%, oklch(1 0 0 / 8%) 100%);
   border: 1px solid oklch(1 0 0 / 28%);
   box-shadow:
-    0 10px 24px -2px color-mix(in oklab, var(--primary) 55%, transparent),
-    0 2px 8px -1px color-mix(in oklab, var(--primary) 70%, transparent),
-    inset 0 1.5px 1px oklch(1 0 0 / 55%),
-    inset 0 -1.5px 2px oklch(0 0 0 / 30%);
-  transition: transform 0.42s cubic-bezier(0.34, 1.35, 0.4, 1);
+    0 8px 20px -2px color-mix(in oklab, var(--primary) 50%, transparent),
+    0 2px 8px -1px color-mix(in oklab, var(--primary) 65%, transparent),
+    inset 0 1.5px 1px oklch(1 0 0 / 50%),
+    inset 0 -1.5px 2px oklch(0 0 0 / 25%);
+  will-change: transform;
 }
 /* "or" divider badge */
 @utility or-badge {

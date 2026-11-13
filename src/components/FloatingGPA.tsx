@@ -1,5 +1,5 @@
 import { GripVertical } from "lucide-react";
-import { useEffect, useRef, useState, type PointerEvent } from "react";
+import { memo, useEffect, useRef, useState, type PointerEvent } from "react";
 import { createPortal } from "react-dom";
 
 type Pos = { x: number; y: number };
@@ -16,7 +16,7 @@ const clamp = (p: Pos, el: HTMLElement): Pos => ({
 });
 
 /** Small draggable live-GPA bubble. Starts bottom-right; remembers where it was dropped. */
-export function FloatingGPA({ gpa, credits }: { gpa: number; credits: number }) {
+export const FloatingGPA = memo(function FloatingGPA({ gpa, credits }: { gpa: number; credits: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const drag = useRef<{ dx: number; dy: number } | null>(null);
   const [pos, setPos] = useState<Pos | null>(null);
@@ -91,4 +91,4 @@ export function FloatingGPA({ gpa, credits }: { gpa: number; credits: number }) 
     </div>,
     document.body,
   );
-}
+});

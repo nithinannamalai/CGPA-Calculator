@@ -1,6 +1,6 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { BarChart3, Calculator, ClipboardList, FileText, Linkedin, Target } from "lucide-react";
-import { useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
+import { memo, useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
 import bg from "@/assets/lambo-bg.jpg";
 
 const links = [
@@ -64,7 +64,8 @@ export function Shell({ children }: { children: ReactNode }) {
       } catch {}
       const targetIndex = hoverIndex ?? activeIndex;
       if (targetIndex !== activeIndex) {
-        navigate({ to: links[targetIndex].to });
+        const link = links[targetIndex];
+        if (link) navigate({ to: link.to });
       }
     }
     setIsDragging(false);
@@ -113,12 +114,13 @@ export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className="relative min-h-screen overflow-x-hidden selection:bg-primary/20 selection:text-primary">
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <img src={bg} alt="" width={1920} height={1088} className="h-full w-full scale-110 object-cover blur-xl transform-gpu will-change-transform" />
+        {/* Pre-blurred at build time — no CSS blur needed, zero GPU cost */}
+        <img src={bg} alt="" width={1280} height={720} className="h-full w-full object-cover" fetchPriority="high" decoding="async" />
         <div className="absolute inset-0 bg-overlay" />
-        {/* Soft ambient luminous mesh orbs */}
-        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-cyan-500/15 blur-3xl animate-[ambient-float_10s_ease-in-out_infinite]" />
-        <div className="absolute top-1/3 -right-32 h-96 w-96 rounded-full bg-amber-500/15 blur-3xl animate-[ambient-float_12s_ease-in-out_infinite_reverse]" />
-        <div className="absolute -bottom-32 left-1/3 h-96 w-96 rounded-full bg-purple-500/15 blur-3xl animate-[ambient-float_14s_ease-in-out_infinite]" />
+        {/* Static ambient colour tints — no animation, compositor-only layers */}
+        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-cyan-500/10 blur-3xl" />
+        <div className="absolute top-1/3 -right-32 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl" />
+        <div className="absolute -bottom-32 left-1/3 h-96 w-96 rounded-full bg-purple-500/10 blur-3xl" />
       </div>
       <header className="sticky top-0 z-20 px-3 pt-[max(0.75rem,env(safe-area-inset-top))] sm:px-6 sm:pt-5">
         <nav className="glass mx-auto flex max-w-4xl items-center justify-center sm:justify-between !rounded-full px-4 py-2.5 sm:px-5 sm:py-2">
@@ -218,7 +220,7 @@ export function Shell({ children }: { children: ReactNode }) {
   );
 }
 
-export function Stat({
+export const Stat = memo(function Stat({
   label,
   value,
   big,
@@ -243,7 +245,7 @@ export function Stat({
       </div>
     </div>
   );
-}
+});
 
 export function GuidanceLink() {
   return (

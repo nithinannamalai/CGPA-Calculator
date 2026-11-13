@@ -129,7 +129,7 @@ function GpaPage() {
           <li className="glass rounded-2xl p-8 text-center text-muted-foreground">No courses yet — add your first one above.</li>
         )}
         {courses.map((c) => (
-          <li key={c.id} className="glass animate-rise rounded-2xl p-4">
+          <li key={c.id} className="glass rounded-2xl p-4">
             {editing === c.id ? (
               <div className="grid grid-cols-[minmax(0,1fr)_5.5rem] gap-2 sm:flex sm:flex-row">
                 <input className="field min-w-0 sm:flex-1" aria-label="Course name" enterKeyHint="next" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} onKeyDown={nextOnEnter(draftCreditsRef)} />
