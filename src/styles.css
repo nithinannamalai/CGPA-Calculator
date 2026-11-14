@@ -191,6 +191,21 @@ a, button, select, input, textarea { -webkit-tap-highlight-color: transparent; t
   &::placeholder { color: var(--muted-foreground); opacity: .7; }
   &:focus { border-color: var(--ring); background: oklch(1 0 0 / 14%); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ring) 30%, transparent); }
 }
+@utility no-spin {
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    display: none !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
 @utility btn-primary {
   display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
   border-radius: 0.75rem; padding: 0.65rem 1.1rem; font-weight: 600;

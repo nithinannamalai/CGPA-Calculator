@@ -30,7 +30,7 @@ export const FloatingGPA = memo(function FloatingGPA({ gpa, credits }: { gpa: nu
     try {
       const raw = localStorage.getItem(KEY);
       if (raw && ref.current) setPos(clamp(JSON.parse(raw) as Pos, ref.current));
-    } catch {}
+    } catch { }
     const onResize = () => setPos((p) => (p && ref.current ? clamp(p, ref.current) : p));
     const isField = (el: EventTarget | null) =>
       el instanceof HTMLElement && el.matches("input:not([type=checkbox]):not([type=radio]), textarea, select");
@@ -76,9 +76,8 @@ export const FloatingGPA = memo(function FloatingGPA({ gpa, credits }: { gpa: nu
       onPointerUp={onUp}
       onPointerCancel={onUp}
       style={pos ? { left: pos.x, top: pos.y } : undefined}
-      className={`glass fixed z-40 flex whitespace-nowrap cursor-grab touch-none select-none items-center gap-1.5 !rounded-2xl py-2 pl-2 pr-4 transition-[opacity,transform,box-shadow] duration-300 data-[dragging=true]:scale-105 data-[dragging=true]:cursor-grabbing data-[dragging=true]:shadow-glow max-sm:data-[typing=true]:pointer-events-none max-sm:data-[typing=true]:opacity-0 hover:border-white/30 ${
-        pos ? "" : "bottom-24 right-4 sm:bottom-6 sm:right-6"
-      }`}
+      className={`glass fixed z-40 flex whitespace-nowrap cursor-grab touch-none select-none items-center gap-1.5 !rounded-2xl py-2 pl-2 pr-4 transition-[opacity,transform,box-shadow] duration-300 data-[dragging=true]:scale-105 data-[dragging=true]:cursor-grabbing data-[dragging=true]:shadow-glow max-sm:data-[typing=true]:pointer-events-none max-sm:data-[typing=true]:opacity-0 hover:border-white/30 ${pos ? "" : "bottom-24 right-4 sm:bottom-6 sm:right-6"
+        }`}
     >
       <GripVertical size={16} className="shrink-0 text-muted-foreground transition-colors hover:text-primary" />
       <div className="leading-none">

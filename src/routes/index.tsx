@@ -84,7 +84,7 @@ function GpaPage() {
         className="glass mt-6 grid grid-cols-[minmax(0,1fr)_5rem_auto] gap-2 rounded-2xl p-3 sm:flex sm:flex-row"
       >
         <input ref={nameRef} className="field min-w-0 sm:flex-1" placeholder="Course name" enterKeyHint="next" autoComplete="off" value={name} onChange={(e) => setName(e.target.value)} onKeyDown={nextOnEnter(creditsRef)} />
-        <input ref={creditsRef} className="field min-w-0 max-sm:!px-2.5 max-sm:[appearance:textfield] max-sm:[&::-webkit-inner-spin-button]:appearance-none sm:w-32" placeholder="Credits" type="number" min="0" step="0.5" inputMode="decimal" enterKeyHint="done" value={credits} onChange={(e) => setCredits(e.target.value)} />
+        <input ref={creditsRef} className="field no-spin min-w-0 max-sm:!px-2.5 sm:w-32" placeholder="Credits" type="number" min="0" step="0.5" inputMode="decimal" enterKeyHint="done" value={credits} onChange={(e) => setCredits(e.target.value)} />
         <button className="btn-primary max-sm:!px-3" type="submit" aria-label="Save course"><Plus size={18} /> <span className="sm:hidden">Save</span><span className="hidden sm:inline">Save course</span></button>
       </form>
 
@@ -133,7 +133,7 @@ function GpaPage() {
             {editing === c.id ? (
               <div className="grid grid-cols-[minmax(0,1fr)_5.5rem] gap-2 sm:flex sm:flex-row">
                 <input className="field min-w-0 sm:flex-1" aria-label="Course name" enterKeyHint="next" value={draft.name} onChange={(e) => setDraft({ ...draft, name: e.target.value })} onKeyDown={nextOnEnter(draftCreditsRef)} />
-                <input ref={draftCreditsRef} className="field min-w-0 sm:w-28" aria-label="Credits" enterKeyHint="done" type="number" min="0" step="0.5" inputMode="decimal" value={draft.credits} onChange={(e) => setDraft({ ...draft, credits: e.target.value })} />
+                <input ref={draftCreditsRef} className="field no-spin min-w-0 sm:w-28" aria-label="Credits" enterKeyHint="done" type="number" min="0" step="0.5" inputMode="decimal" value={draft.credits} onChange={(e) => setDraft({ ...draft, credits: e.target.value })} />
                 <div className="col-span-2 flex gap-2">
                   <button className="btn-primary flex-1" onClick={() => {
                     const cr = Number(draft.credits);
