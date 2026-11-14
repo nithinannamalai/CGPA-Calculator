@@ -9,6 +9,7 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
@@ -107,6 +108,7 @@ function RootShell({ children }: { children: ReactNode }) {
             idle preconnect, font-load class, paint containment, reduced-motion */}
         <script src="/performanceoptimiser.js" defer />
         {children}
+        <Analytics />
         <Scripts />
       </body>
     </html>
