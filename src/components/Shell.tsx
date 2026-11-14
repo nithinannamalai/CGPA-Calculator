@@ -1,7 +1,7 @@
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import { BarChart3, Calculator, ClipboardList, FileText, Linkedin, Target } from "lucide-react";
 import { memo, useEffect, useRef, useState, type PointerEvent, type ReactNode } from "react";
-import bg from "@/assets/lambo-bg.jpg";
+import bg from "@/assets/lambo-bg.webp";
 
 const links = [
   { to: "/", label: "GPA", short: "GPA", icon: Calculator },

@@ -103,6 +103,9 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        {/* Performance optimiser: runs before React hydrates — passive listeners,
+            idle preconnect, font-load class, paint containment, reduced-motion */}
+        <script src="/performanceoptimiser.js" defer />
         {children}
         <Scripts />
       </body>
