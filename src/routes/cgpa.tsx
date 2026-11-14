@@ -183,7 +183,7 @@ function CgpaPage() {
                         max="10"
                         step="0.01"
                         inputMode="decimal"
-                        className="field w-full max-sm:[appearance:textfield] max-sm:[&::-webkit-inner-spin-button]:appearance-none"
+                        className="field w-full"
                         placeholder="8.5"
                         enterKeyHint="next"
                         data-sem-gpa={entry.id}
@@ -201,7 +201,7 @@ function CgpaPage() {
                         min="0"
                         step="0.5"
                         inputMode="decimal"
-                        className="field w-full max-sm:[appearance:textfield] max-sm:[&::-webkit-inner-spin-button]:appearance-none"
+                        className="field w-full"
                         placeholder="20"
                         enterKeyHint="next"
                         data-sem-credits={entry.id}

@@ -159,7 +159,7 @@ function TargetPage() {
               <Field label="Target CGPA" value={f.target} onChange={(v) => setF({ ...f, target: v })} placeholder="e.g. 8.5" invalid={f.target.trim() !== "" && !targetOk} />
             </div>
             <Field
-              label="Semesters Completed (N)"
+              label="Semesters Completed"
               value={f.sems}
               onChange={(v) => setF({ ...f, sems: v })}
               placeholder="e.g. 3"
@@ -203,7 +203,7 @@ function TargetPage() {
                 invalid={cf.upcomingCredits.trim() !== "" && !upcomingCreditsOk}
               />
             </div>
-            <p className="text-xs text-muted-foreground">{"Upcoming Sem Credits are the credit points for the next semester you want to calculate."}</p>
+            <p className="text-xs text-muted-foreground">{"*Upcoming Sem Credits are the credit points for the next semester you want to calculate."}</p>
           </div>
           <Result
             label="Accurate Credit-Weighted Required GPA"
