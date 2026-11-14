@@ -15,6 +15,7 @@
 (function () {
   "use strict";
 
+  try {
   /* ─── 1. PASSIVE EVENT LISTENERS ───────────────────────────────────────── */
   // Browsers can't optimise scroll if listeners might call preventDefault().
   // Mark wheel / touch as passive so the compositor thread never waits.
@@ -201,4 +202,7 @@
       console.log("[perf] CalCGPA performance optimiser loaded ✓");
     }
   } catch (_) {}
+  } catch (err) {
+    console.warn("[perf] performanceoptimiser encountered an issue:", err);
+  }
 })();
