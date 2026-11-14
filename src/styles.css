@@ -109,10 +109,10 @@
   }
 }
 
-body { font-family: var(--font-sans); touch-action: pan-x pan-y; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; touch-action: pan-x pan-y; }
+body { font-family: var(--font-sans); }
+html { -webkit-text-size-adjust: 100%; -webkit-overflow-scrolling: touch; }
 /* Smooth taps on phones: no grey flash, no double-tap zoom delay */
-a, button, select, input, textarea { -webkit-tap-highlight-color: transparent; touch-action: manipulation; color-scheme: dark; }
+a, button, select, input, textarea { -webkit-tap-highlight-color: transparent; color-scheme: dark; }
 /* 16px inputs stop iPhones from zooming in when a box is tapped */
 @layer base {
   input, textarea { font-size: 16px; color-scheme: dark; }
