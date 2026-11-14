@@ -157,13 +157,42 @@
     });
   }
 
-  /* ─── 9. TAP HIGHLIGHT — already in CSS but belt-and-suspenders ─────────── */
+  /* ─── 9. TAP HIGHLIGHT & ZOOM LOCK ─────────────────────────────────────── */
   const tapStyle = document.createElement("style");
   tapStyle.textContent = `
     * { -webkit-tap-highlight-color: transparent; }
+    html, body { touch-action: pan-x pan-y; }
     .fonts-loaded body { font-synthesis: none; }
   `;
   document.head.appendChild(tapStyle);
+
+  /* ─── 10. LOCK ZOOM (SAFARI / MOBILE GESTURES & MULTI-TOUCH) ────────────── */
+  // Disables iOS Safari gesture-based pinch zoom
+  document.addEventListener("gesturestart", (e) => e.preventDefault());
+  document.addEventListener("gesturechange", (e) => e.preventDefault());
+  document.addEventListener("gestureend", (e) => e.preventDefault());
+
+  // Disables multi-finger pinch-to-zoom on Android & iOS touchscreens
+  document.addEventListener(
+    "touchstart",
+    (e) => {
+      if (e.touches && e.touches.length > 1) {
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  );
+
+  // Disables trackpad / Ctrl + wheel zoom
+  document.addEventListener(
+    "wheel",
+    (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  );
 
   /* ─── Done ──────────────────────────────────────────────────────────────── */
   // Dev-only log — safely checks without Node's process object
